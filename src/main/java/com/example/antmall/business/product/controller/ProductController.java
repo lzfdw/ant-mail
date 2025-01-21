@@ -1,6 +1,7 @@
 package com.example.antmall.business.product.controller;
 
 import com.example.antmall.business.product.bo.ProductAddBO;
+import com.example.antmall.business.product.bo.ProductEditBO;
 import com.example.antmall.business.product.service.ProductService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -22,5 +23,11 @@ public class ProductController {
     @PostMapping("add")
     public void add(@Valid @RequestBody ProductAddBO addBO) {
         productService.add(addBO);
+    }
+
+    @ApiOperation("修改")
+    @PostMapping("edit")
+    public void edit(@Valid @RequestBody ProductEditBO editBO) {
+        productService.edit(editBO);
     }
 }
