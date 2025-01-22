@@ -20,8 +20,6 @@ import java.util.List;
 
 @Service
 public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> implements ProductService {
-
-
     @Override
     public void add(ProductAddBO addBO) {
         Product product = new Product();
@@ -63,4 +61,11 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
         pageVO.setDataList(productQueryVOList);
         return pageVO;
     }
+
+    @Override
+    public void delete(List<Long> idList) {
+        removeBatchByIds(idList);
+    }
+
+
 }

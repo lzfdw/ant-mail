@@ -9,16 +9,19 @@ import com.example.antmall.common.entity.PageVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
 @Api(tags = "商品管理")
 @RestController
+@Validated
 @RequestMapping("product")
 public class ProductController {
     @Autowired
@@ -39,5 +42,11 @@ public class ProductController {
     @PostMapping("page")
     public PageVO<ProductQueryVO> page(ProductQueryBO queryBO) {
         return productService.page(queryBO);
+    }
+
+    @ApiOperation("删除")
+    @PostMapping("delete")
+    public void delete(@NotEmpty @RequestBody List<Long> idList) {
+        productService.delete(idList);
     }
 }

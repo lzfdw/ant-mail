@@ -8,9 +8,13 @@ import com.example.antmall.business.product.entity.Product;
 import com.example.antmall.business.product.vo.ProductQueryVO;
 import com.example.antmall.common.entity.PageVO;
 
+import java.util.List;
+
 public interface ProductService extends IService<Product> {
     void add(ProductAddBO addBO);
     void edit(ProductEditBO editBO);
     PageVO<ProductQueryVO> page(ProductQueryBO queryBO);
+
+    void delete(List<Long> idList);
 
 }
