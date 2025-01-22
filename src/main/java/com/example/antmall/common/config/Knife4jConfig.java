@@ -27,7 +27,7 @@ public class Knife4jConfig {
                 .groupName("all")
                 .select()
                 //指定Controller扫描路径。可以不具体到controller，它会扫描指定路径下的所有
-                .apis(RequestHandlerSelectors.basePackage("com.knife.ant"))
+                .apis(RequestHandlerSelectors.basePackage("com.example.antmall"))
                 .paths(PathSelectors.any())
                 .build();
         return docket;

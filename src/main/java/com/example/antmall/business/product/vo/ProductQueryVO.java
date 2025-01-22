@@ -1,9 +1,12 @@
 package com.example.antmall.business.product.vo;
 
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+@Data
 public class ProductQueryVO {
     @ApiModelProperty("id")
     private Long id;

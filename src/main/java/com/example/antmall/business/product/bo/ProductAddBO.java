@@ -3,9 +3,9 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
+@Data
 public class ProductAddBO {
     @NotBlank(message = "商品名字不能为空")
     @ApiModelProperty("商品名字")
