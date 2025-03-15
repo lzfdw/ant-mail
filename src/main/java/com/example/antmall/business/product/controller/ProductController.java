@@ -9,6 +9,8 @@ import com.example.antmall.common.entity.PageVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,15 +21,25 @@ import java.util.List;
 @Api(tags = "商品管理")
 @RestController
 @Validated
-@RequestMapping("product")
+@RequestMapping("/api/products")
 public class ProductController {
-    @Autowired
-    private ProductService productService;
+    private final ProductService productService;
+
+    public ProductController(ProductService productService) {
+        this.productService = productService;
+    }
+
     @ApiOperation("添加")
     @PostMapping("add")
-    public void add(@Valid @RequestBody ProductAddBO addBO) {
-        productService.add(addBO);
+    public ResponseEntity<Void> add(@Valid @RequestBody ProductAddBO productAddBO)
+    {
+        productService.add(productAddBO);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
+//    public void add(@Valid @RequestBody ProductAddBO addBO) {
+//        productService.add(addBO);
+//    }
+
 
     @ApiOperation("修改")
     @PostMapping("edit")

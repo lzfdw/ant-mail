@@ -1,6 +1,7 @@
 package com.example.antmall.business.product.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.example.antmall.business.cart.dto.CartVO;
 import com.example.antmall.business.product.bo.ProductAddBO;
 import com.example.antmall.business.product.bo.ProductEditBO;
 import com.example.antmall.business.product.bo.ProductQueryBO;
@@ -8,7 +9,9 @@ import com.example.antmall.business.product.entity.Product;
 import com.example.antmall.business.product.vo.ProductQueryVO;
 import com.example.antmall.common.entity.PageVO;
 
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 public interface ProductService extends IService<Product> {
     void add(ProductAddBO addBO);
@@ -16,5 +19,8 @@ public interface ProductService extends IService<Product> {
     PageVO<ProductQueryVO> page(ProductQueryBO queryBO);
 
     void delete(List<Long> idList);
+
+    Map<Long, Product> getProductMapByIds(Collection<Long> ids);
+
 
 }

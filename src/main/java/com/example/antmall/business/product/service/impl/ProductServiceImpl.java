@@ -16,7 +16,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> implements ProductService {
@@ -65,6 +68,13 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
     @Override
     public void delete(List<Long> idList) {
         removeBatchByIds(idList);
+    }
+
+    @Override
+    public Map<Long, Product> getProductMapByIds(Collection<Long> ids) {
+        return this.listByIds(ids)
+                .stream()
+                .collect(Collectors.toMap(Product::getId, p -> p));
     }
 
 

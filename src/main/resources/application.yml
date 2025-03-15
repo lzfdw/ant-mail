@@ -10,6 +10,15 @@ spring:
     password: 8816622
 
 mybatis-plus:
+  mapper-locations: classpath*:mapper/**/*.xml
   configuration:
-    # mybatis-plus配置控制台打印完整带参数SQL语句
+    # SQL日志打印配置
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    # 枚举类型处理器
+    default-enum-type-handler: com.baomidou.mybatisplus.core.handlers.MybatisEnumTypeHandler
+    # 显示实际参数（配合log-impl使用）
+    log-sql-parameter: true
+    # 其他常用配置
+    map-underscore-to-camel-case: true  # 自动驼峰转换
+    cache-enabled: false                # 关闭二级缓存
+    local-cache-scope: statement        # 缓存作用域
